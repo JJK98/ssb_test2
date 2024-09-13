@@ -29,8 +29,8 @@ public class ArticleController {
     }
 
     @PostMapping("/create")
-    public void create(@RequestParam("title")String title, @RequestParam("content")String content){
+    public String create(@RequestParam("title")String title, @RequestParam("content")String content){
         this.articleService.create(title,content);
-
+        return "redirect:/article/list";
     }
 }
