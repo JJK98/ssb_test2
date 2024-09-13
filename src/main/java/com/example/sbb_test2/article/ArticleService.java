@@ -1,5 +1,6 @@
 package com.example.sbb_test2.article;
 
+import com.example.sbb_test2.SomethingIsStrange;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,16 +17,16 @@ public class ArticleService {
         return this.articleRepository.findAll();
     }
     public void create(String title, String content){
-        Article art = new Article();
-        art.setTitle(title);
-        art.setContent(content);
-        art.setCreateDate(LocalDateTime.now());
-        this.articleRepository.save(art);
+        Article article = new Article();
+        article.setTitle(title);
+        article.setContent(content);
+        article.setCreateDate(LocalDateTime.now());
+        this.articleRepository.save(article);
     }
     public Article getArticle(Integer id){
-        Optional<Article> arti = articleRepository.findById(id);
-        if(arti.isPresent()){
-            return arti.get();
+        Optional<Article> article = articleRepository.findById(id);
+        if(article.isPresent()){
+            return article.get();
         } else{
             throw new SomethingIsStrange("Hmm..");
         }
